@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ai-rover-dashboard
+    runtime: python
+    plan: free
+    rootDir: AI rover project
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+
+  - type: static
+    name: ai-rover-links
+    buildCommand: mkdir -p dist && cp index.html dist/index.html
+    staticPublishPath: dist
